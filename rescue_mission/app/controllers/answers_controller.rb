@@ -1,22 +1,25 @@
 class AnswersController < ApplicationController
   def index
-    @answers = Answer.all
-  end
-
-  def show
-    @answer = Answer.find(params[:question_id])
+    @question = Question.find(params[:question_id])
+    @answers = @question.answers
   end
 
 
   def new
+    @question = Question.find(params[:question_id])
     @answer = Answer.new
   end
 
   def create
+    @question = Question.find(params[:question_id])
     @answer = Answer.new(answer_params)
+    @answer.question = @question
+
     if @answer.save
-      redirect_to @question, notice: 'Answer was successfully created.'
+      flash[:notice] = 'Answer was successfully created.'
+      redirect_to question_path
     else
+      flash[:alert] = "Failed to save answer."
       render :new
     end
   end
