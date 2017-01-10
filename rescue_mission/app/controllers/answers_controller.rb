@@ -17,10 +17,16 @@ class AnswersController < ApplicationController
 
     if @answer.save
       flash[:notice] = 'Answer was successfully created.'
-      redirect_to question_path
+      redirect_to question_path @question
     else
       flash[:alert] = "Failed to save answer."
       render :new
     end
+  end
+
+  private
+
+  def answer_params
+    params.require(:answer).permit(:answer_description)
   end
 end

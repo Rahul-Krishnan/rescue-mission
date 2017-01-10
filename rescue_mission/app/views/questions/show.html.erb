@@ -7,16 +7,12 @@
 
 <h3>Answers:</h3>
 
-
-
-
 <ul>
   <% @question.answers.each do |answer| %>
   <li> <%= answer.answer_description%> </li>
   <% end %>
 </ul>
 
-<% binding.pry %>
 <%= render :partial => '/answers/answer_form', answer: @answer%>
 
 <%= link_to 'Back', questions_path %>
