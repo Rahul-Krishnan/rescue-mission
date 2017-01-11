@@ -15,6 +15,8 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     @answer.question = @question
 
+# @question.answers.new(answer_params)
+
     if @answer.save
       flash[:notice] = 'Answer was successfully created.'
     else
@@ -27,5 +29,6 @@ class AnswersController < ApplicationController
 
   def answer_params
     params.require(:answer).permit(:answer_description)
+# .merge(question: Question.find(answer_params))
   end
 end

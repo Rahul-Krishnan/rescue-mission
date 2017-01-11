@@ -1,3 +1,6 @@
+<%= link_to 'Edit', edit_question_path %>
+<%= link_to 'Delete', questions_path %>
+<%= link_to 'Back', questions_path %>
 
 <h3>Question Title:</h3>
 <p><%= @question.title %></p>
@@ -14,5 +17,3 @@
 </ul>
 
 <%= render :partial => '/answers/answer_form', answer: @answer%>
-
-<%= link_to 'Back', questions_path %>
